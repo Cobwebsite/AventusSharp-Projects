@@ -13,7 +13,7 @@
 
     <div class="texte">
         <h1>Welcome to your Aventus App</h1>
-        <av-counter></av-counter>
+        <${{componentPrefix}}-counter></${{componentPrefix}}-counter>
     </div>
 
     <div class="documentation">

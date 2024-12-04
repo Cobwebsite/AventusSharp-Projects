@@ -1,0 +1,35 @@
+import { HomePage } from "../pages/HomePage/HomePage.wcl.avt";
+
+export class App extends Aventus.Navigation.Router implements Aventus.DefaultComponent {
+
+    //#region static
+
+    //#endregion
+
+
+    //#region props
+
+    //#endregion
+
+
+    //#region variables
+
+    //#endregion
+
+
+    //#region constructor
+
+    //#endregion
+
+
+    //#region methods
+    /**
+     * @inheritdoc
+     */
+    protected override defineRoutes(): void {
+        this.addRoute("/", HomePage);
+    }
+
+    //#endregion
+
+}

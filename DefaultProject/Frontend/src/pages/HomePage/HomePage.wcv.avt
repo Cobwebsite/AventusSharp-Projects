@@ -1,0 +1,26 @@
+<div class="block">
+    <div class="logos">
+        <div class="aventus-js">
+            <av-img src="/img/logo_js.svg"></av-img>
+        </div>
+        <div class="more">
+            <mi-icon icon="add"></mi-icon>
+        </div>
+        <div class="aventus-sharp">
+            <av-img src="/img/logo_sharp.svg"></av-img>
+        </div>
+    </div>
+
+    <div class="texte">
+        <h1>Welcome to your Aventus App</h1>
+        <av-counter></av-counter>
+    </div>
+
+    <div class="documentation">
+        <h3>Documentation</h3>
+        <div class="links">
+            <a href="https://aventusjs.com" class="doc-js" target="_blank">AventusJs</a>
+            <a href="https://aventusjs.com" class="doc-sharp" target="_blank">AventusSharp</a>
+        </div>
+    </div>
+</div>

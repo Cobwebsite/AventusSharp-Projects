@@ -1,0 +1,74 @@
+:host {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	width: 100%;
+
+	.block {
+		display: flex;
+		flex-direction: column;
+		height: min(500px, calc(100% - 40px));
+		justify-content: space-between;
+		text-align: center;
+		width: min(500px, calc(100% - 40px));
+
+		.logos {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+
+			.aventus-js {
+				max-width: 300px;
+				width: 50%;
+			}
+
+			.aventus-sharp {
+				max-width: 300px;
+				width: 50%;
+			}
+
+			.more {
+				color: white;
+				font-size: 40px;
+			}
+
+			av-img {
+				max-width: 100%;
+			}
+		}
+
+		h1 {
+			color: white;
+			text-align: center;
+		}
+
+		.documentation {
+			h3 {
+				color: white;
+			}
+
+			.links {
+				display: flex;
+				font-size: 20px;
+				gap: 30px;
+				justify-content: center;
+			}
+
+			a {
+				color: var(--primary-color);
+				text-decoration: none;
+				border-bottom: 1px solid currentColor;
+			}
+			
+			.doc-js {
+				color: #e5540e;
+			}
+		}
+	}
+}
+
+:host([visible]) {
+	display: flex;
+}

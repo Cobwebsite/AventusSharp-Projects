@@ -1,0 +1,38 @@
+import { PressManager } from "Aventus@Main:Aventus.package.avt";
+
+export class Counter extends Aventus.WebComponent implements Aventus.DefaultComponent {
+
+    //#region static
+
+    //#endregion
+
+
+    //#region props
+
+    //#endregion
+
+
+    //#region variables
+    @Watch()
+    public count: number = 0;
+    //#endregion
+
+
+    //#region constructor
+
+    //#endregion
+
+
+    //#region methods
+
+    protected override postCreation(): void {
+        new PressManager({
+            element: this,
+            onPress: () => {
+                this.count++;
+            }
+        });
+    }
+    //#endregion
+
+}

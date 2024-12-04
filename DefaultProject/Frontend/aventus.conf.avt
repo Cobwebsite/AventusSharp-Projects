@@ -1,0 +1,34 @@
+{
+	"module": "${{projectName}}",
+	"componentPrefix": "${{componentPrefix}}",
+	"hideWarnings": true,
+	"build": [
+		{
+			"name": "Main",
+			"src": [
+				"./src/*"
+			],
+			"compile": [{
+				"output": "../wwwroot/js/front.js"
+			}],
+			"dependances": [
+				{
+					"uri": "@AventusSharp"
+				},
+				{
+					"uri": "@AventusUI"
+				},
+				{
+					"uri": "https://store.aventusjs.com/libs/MaterialIcon/1_0_0/MaterialIcon@Main.package.avt"
+				}
+			]
+		}
+	],
+	"static": [
+		{
+			"name": "Main",
+			"input": "./static/",
+			"output": "../wwwroot"
+		}
+	]
+}

@@ -1,0 +1,15 @@
+:host {
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+	box-shadow: var(--elevation-4);
+	cursor: pointer;
+	padding: 8px 16px;
+	user-select: none;
+
+	button {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		pointer-events: none;
+	}
+}

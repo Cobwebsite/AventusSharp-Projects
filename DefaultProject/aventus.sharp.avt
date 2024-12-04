@@ -1,0 +1,4 @@
+{
+    "csProj": "./Demo.csproj",
+    "outputPath": "./Frontend/src/generated"
+}

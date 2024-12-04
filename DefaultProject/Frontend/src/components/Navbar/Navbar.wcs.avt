@@ -1,0 +1,12 @@
+:host {
+	align-items: center;
+	display: flex;
+	height: 70px;
+	width: 100%;
+    padding: 10px 30px;
+
+	.title {
+		color: var(--primary-color);
+		font-size: 20px;
+	}
+}

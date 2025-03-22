@@ -20,7 +20,7 @@
         <h3>Documentation</h3>
         <div class="links">
             <a href="https://aventusjs.com" class="doc-js" target="_blank">AventusJs</a>
-            <a href="https://aventusjs.com" class="doc-sharp" target="_blank">AventusSharp</a>
+            <a href="https://sharp.aventusjs.com" class="doc-sharp" target="_blank">AventusSharp</a>
         </div>
     </div>
 </div>

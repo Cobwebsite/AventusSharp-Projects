@@ -7,7 +7,7 @@ export class Template extends AventusTemplate {
             organization: "Cobwebsite",
             isProject: true,
             tags: ["AventusSharp", "Project"],
-            version: "0.0.1",
+            version: "0.0.4",
             allowQuick: false,
             documentation: "https://aventussharp.com",
             repository: "https://github.com/Cobwebsite/AventusSharp-Projects",

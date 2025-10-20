@@ -1,4 +1,4 @@
 {
-    "csProj": "./Demo.csproj",
+    "csProj": "./${{projectName}}.csproj",
     "outputPath": "./Frontend/src/generated"
 }

@@ -1,0 +1,17 @@
+global using AventusSharp;
+global using AventusSharp.Chart;
+global using AventusSharp.Data;
+global using AventusSharp.Data.Attributes;
+global using AventusSharp.Data.CustomTableMembers;
+global using AventusSharp.Data.Manager;
+global using AventusSharp.Data.Manager.DB;
+global using AventusSharp.Data.Migrations;
+global using AventusSharp.Routes;
+global using AventusSharp.Routes.Attributes;
+global using AventusSharp.Routes.Response;
+global using AventusSharp.Routes.Request;
+global using AventusSharp.Tools;
+global using AventusSharp.Tools.Attributes;
+global using AventusSharp.Hosting;
+global using AventusSharp.AspNetCore.Hosting;
+global using AventusSharp.WebSocket;

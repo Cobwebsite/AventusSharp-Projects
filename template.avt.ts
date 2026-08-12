@@ -35,8 +35,9 @@ export class Template extends AventusTemplate {
         
         await this.writeFile();
 
-        await this.exec("dotnet add package AventusSharp");
-        await this.exec("dotnet add package Newtonsoft.Json");
+        await this.exec("dotnet add package AventusSharp.AspNetCore");
+        await this.exec("dotnet add package AventusSharp.Data.Mysql");
+        await this.exec("dotnet add package Serilog.AspNetCore");
 
     }
 

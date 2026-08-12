@@ -1,40 +1,71 @@
-﻿using System.Reflection;
-using AventusSharp.Tools;
-using AventusSharp.Tools.Attributes;
-
+﻿
 namespace ${{projectName}};
 
-public class Configuration
+public class Configuration : AutoConfiguration
 {
-    public DatabaseConfig Database { get; private set; }
-    public Configuration(WebApplication app)
+    public DatabaseConfig Database { get; private set; } = null!;
+
+    [ConfigIgnore]
+    public string EnvironmentName { get; private set; } = "";
+
+    public Configuration(IConfiguration config, IHostEnvironment environment) : base(config)
     {
-        Database = GetDatabase(app) ?? throw new Exception("Can't load the Database Config");
+        EnvironmentName = environment.EnvironmentName;
+        if (!AventusExtension.IsExportCommand)
+        {
+            Validate(environment);
+        }
     }
 
-    private DatabaseConfig? GetDatabase(WebApplication app)
+    private void Validate(IHostEnvironment environment)
     {
-        return app.Configuration.GetSection("Database").Get<DatabaseConfig>() ?? EnvConfig.Load<DatabaseConfig>();
+        List<string> errors = [];
+
+        Require(Database.Host, "Database.Host", errors);
+        Require(Database.Database, "Database.Database", errors);
+        Require(Database.Username, "Database.Username", errors);
+        ValidatePort(Database.Port, "Database.Port", errors);
+
+        if (environment.IsProduction())
+        {
+            Require(Database.Password, "Database.Password", errors);
+        }
+
+        if (errors.Count > 0) throw new ConfigurationValidationException(errors);
+    }
+
+
+    private static void Require(string value, string key, List<string> errors)
+    {
+        if (string.IsNullOrWhiteSpace(value)) errors.Add($"{key} is required.");
+    }
+
+    private static void ValidatePort(uint? port, string key, List<string> errors)
+    {
+        if (port is < 1 or > 65535) errors.Add($"{key} must be between 1 and 65535.");
     }
 }
 
-
-public class DatabaseConfig
+public sealed class ConfigurationValidationException : Exception
 {
-    [EnvName("MYSQL_HOST")]
-    public required string Host { get; set; }
-    [EnvName("MYSQL_PORT")]
-    public int? Port { get; set; }
-    [EnvName("MYSQL_DATABASE")]
-    public required string Database { get; set; }
-    [EnvName("MYSQL_USERNAME")]
-    public required string Username { get; set; }
-    [EnvName("MYSQL_PASSWORD")]
-    public required string Password { get; set; }
+    public IReadOnlyList<string> Errors { get; }
 
-
-    public override string ToString()
+    public ConfigurationValidationException(IEnumerable<string> errors)
+        : base("Invalid application configuration:" + Environment.NewLine + string.Join(Environment.NewLine, errors.Select(error => $" - {error}")))
     {
-        return $"{Host}:{Port} {Database} {Username} {Password}";
+        Errors = errors.ToList().AsReadOnly();
     }
+}
+
+public sealed class DatabaseConfig
+{
+    public string Host { get; set; } = "";
+
+    public uint? Port { get; set; }
+
+    public string Database { get; set; } = "";
+
+    public string Username { get; set; } = "";
+
+    public string Password { get; set; } = "";
 }

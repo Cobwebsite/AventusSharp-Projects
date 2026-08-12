@@ -1,4 +1,3 @@
-using AventusSharp.WebSocket;
 
 namespace ${{projectName}}.Websocket.Routes;
 

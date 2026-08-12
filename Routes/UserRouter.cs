@@ -1,5 +1,4 @@
-﻿using AventusSharp.Routes;
-using ${{projectName}}.Data;
+﻿using ${{projectName}}.Data;
 
 namespace ${{projectName}}.Routes;
 

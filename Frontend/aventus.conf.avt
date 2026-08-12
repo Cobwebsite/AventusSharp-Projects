@@ -11,10 +11,10 @@
 			"compile": [{
 				"output": "../wwwroot/js/front.js"
 			}],
-			"dependances": {
+			"dependencies": {
 				"Aventus@Sharp":{},
 				"Aventus@UI": {},
-				"MaterialIcon": "1.0.0"
+				"MaterialIcon": "1.0.4"
 			}
 		}
 	],

@@ -12,21 +12,13 @@ public class Program
     {
         Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
-        Configuration config = new Configuration(builder.Configuration, builder.Environment);
-        StorageCredentials storageCredentials = new StorageCredentials(
-            host: Config.Database.Host,
-            database: Config.Database.Database,
-            username: Config.Database.Username,
-            password: Config.Database.Password
-        )
-        {
-            port = Config.Database.Port
-        };
+        Configuration configuration = new Configuration(builder.Configuration, builder.Environment);
+        IDBStorage storage = new MySQLStorage(configuration.Database);
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         builder.Services
-            .AddSingleton(config)
-            .AddSingleton<IDBStorage>(new MySQLStorage(storageCredentials))
+            .AddSingleton(configuration)
+            .AddSingleton<IDBStorage>(storage)
             .AddDistributedMemoryCache()
             .AddSession(options =>
             {

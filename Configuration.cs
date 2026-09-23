@@ -3,10 +3,11 @@ namespace ${{projectName}};
 
 public class Configuration : AutoConfiguration
 {
-    public DatabaseConfig Database { get; private set; } = null!;
+    public StorageCredentials Database { get; private set; } = null!;
 
     [ConfigIgnore]
     public string EnvironmentName { get; private set; } = "";
+    public bool IsDev => EnvironmentName == Environments.Development;
 
     public Configuration(IConfiguration config, IHostEnvironment environment) : base(config)
     {

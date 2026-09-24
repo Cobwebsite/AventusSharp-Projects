@@ -1,5 +1,5 @@
 using AventusSharp.Data.Storage.Default;
-using AventusSharp.Data.Storage.Mysql;
+using AventusSharp.Data.Storage.${{db}};
 using Serilog;
 
 namespace ${{projectName}};
@@ -12,13 +12,14 @@ public class Program
     {
         Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
-        Configuration configuration = new Configuration(builder.Configuration, builder.Environment);
-        IDBStorage storage = new MySQLStorage(configuration.Database);
-
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+        Configuration configuration = new Configuration(builder.Configuration, builder.Environment);
+        IDBStorage storage = new ${{storage}}(configuration.Database);
+
         builder.Services
             .AddSingleton(configuration)
-            .AddSingleton<IDBStorage>(storage)
+            .AddSingleton(storage)
             .AddDistributedMemoryCache()
             .AddSession(options =>
             {
@@ -31,6 +32,7 @@ public class Program
                 lc.ReadFrom.Configuration(builder.Configuration)
                     .ReadFrom.Services(services);
             });
+        
         WebApplication app = builder.Build();
 
         app
@@ -51,8 +53,9 @@ public class Program
             .UseAventusData((config) =>
             {
 
-            })
-            .Run();
+            });
+
+        app.Run();
 
     }
 }

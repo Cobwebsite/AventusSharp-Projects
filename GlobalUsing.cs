@@ -6,6 +6,7 @@ global using AventusSharp.Data.CustomTableMembers;
 global using AventusSharp.Data.Manager;
 global using AventusSharp.Data.Manager.DB;
 global using AventusSharp.Data.Migrations;
+global using AventusSharp.Data.Storage.Default;
 global using AventusSharp.Routes;
 global using AventusSharp.Routes.Attributes;
 global using AventusSharp.Routes.Response;

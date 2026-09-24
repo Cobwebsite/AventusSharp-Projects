@@ -24,7 +24,7 @@ export class HomePage extends Aventus.Navigation.Page implements Aventus.Default
 	/**
      * @inheritdoc
      */
-    public override configure(): Aventus.Asyncable<Aventus.Navigation.Page.PageConfig> {
+    public override configure(): Aventus.Asyncable<Aventus.Navigation.PageConfig> {
         return {
             title: "${{projectName}}"
         };

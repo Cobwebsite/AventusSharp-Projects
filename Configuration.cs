@@ -3,7 +3,13 @@ namespace ${{projectName}};
 
 public class Configuration : AutoConfiguration
 {
+    #{{normalDbConfig}}
     public StorageCredentials Database { get; private set; } = null!;
+    #{{normalDbConfig/}}
+
+    #{{sqliteDbConfig}}
+    public string Database { get; private set; } = null!;
+    #{{sqliteDbConfig/}}
 
     [ConfigIgnore]
     public string EnvironmentName { get; private set; } = "";
@@ -22,6 +28,7 @@ public class Configuration : AutoConfiguration
     {
         List<string> errors = [];
 
+        #{{normalDbConfig}}
         Require(Database.Host, "Database.Host", errors);
         Require(Database.Database, "Database.Database", errors);
         Require(Database.Username, "Database.Username", errors);
@@ -31,6 +38,11 @@ public class Configuration : AutoConfiguration
         {
             Require(Database.Password, "Database.Password", errors);
         }
+        #{{normalDbConfig/}}
+
+        #{{sqliteDbConfig}}
+        Require(Database, "Database", errors);
+        #{{sqliteDbConfig/}}
 
         if (errors.Count > 0) throw new ConfigurationValidationException(errors);
     }
